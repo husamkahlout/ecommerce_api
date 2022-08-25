@@ -1,5 +1,8 @@
-import 'package:ecommerce_api/providers/dio_provider.dart';
-import 'package:ecommerce_api/views/screens/all_products_screen.dart';
+import 'package:ecommerce_api/airlines_app/providers/airlines_dio_provider.dart';
+import 'package:ecommerce_api/airlines_app/views/screens/passenger_screen.dart';
+import 'package:ecommerce_api/e_commerce_app/providers/dio_provider.dart';
+import 'package:ecommerce_api/e_commerce_app/router/router.dart';
+import 'package:ecommerce_api/e_commerce_app/views/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,28 +19,17 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<DioProvider>(create: (context)=> DioProvider()),
+        ChangeNotifierProvider<AirLinesProvider>(create: (context)=> AirLinesProvider()),
       ],
       child:MaterialApp(
+        navigatorKey: AppRouter.navKey,
         debugShowCheckedModeBanner: false,
-        title: 'Api',
+        title: 'E-Commerce Api',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: AllProductsScreen(),
+        home: PassengerScreen(),
       ),
     );
   }
 }
-/*
-* Scaffold(
-          appBar: AppBar(
-            title: Text('Home'),
-            centerTitle: true,
-          ),
-          body: Center(
-            child: ElevatedButton(onPressed: (){
-              // Navigator.push(context, MaterialPageRoute(builder: (context)=> AllProductsScreen()));
-              // DioHelper.dioHelper.getAllProducts();
-            },child: Text('show the api data Screen'),),
-          ),
-        ),*/
