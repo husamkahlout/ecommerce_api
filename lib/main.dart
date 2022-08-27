@@ -1,12 +1,14 @@
+import 'package:ecommerce_api/airlines_app/data/sp_helper.dart';
 import 'package:ecommerce_api/airlines_app/providers/airlines_dio_provider.dart';
-import 'package:ecommerce_api/airlines_app/views/screens/passenger_screen.dart';
-import 'package:ecommerce_api/e_commerce_app/providers/dio_provider.dart';
-import 'package:ecommerce_api/e_commerce_app/router/router.dart';
-import 'package:ecommerce_api/e_commerce_app/views/screens/home_page.dart';
+import 'package:ecommerce_api/airlines_app/router/router.dart';
+import 'package:ecommerce_api/airlines_app/views/screens/google_maps.dart';
+import 'package:ecommerce_api/airlines_app/views/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await SpHelper.spHelper.initSp();
   runApp(const MyApp());
 }
 
@@ -18,18 +20,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<DioProvider>(create: (context)=> DioProvider()),
-        ChangeNotifierProvider<AirLinesProvider>(create: (context)=> AirLinesProvider()),
+        // ChangeNotifierProvider<DioProvider>(create: (context) => DioProvider()),
+        ChangeNotifierProvider<AirLinesProvider>(
+            create: (context) => AirLinesProvider()),
       ],
-      child:MaterialApp(
+      child: MaterialApp(
         navigatorKey: AppRouter.navKey,
         debugShowCheckedModeBanner: false,
         title: 'E-Commerce Api',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: PassengerScreen(),
+        home: GoogleMapsScreen(),
       ),
     );
   }
 }
+// import 'package:flutter/material.dart';
+
+// void main() => runApp(const MyApp());
+
+
+
+
+

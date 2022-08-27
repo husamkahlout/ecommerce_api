@@ -9,4 +9,7 @@ class AppRouter {
   static navigateWithReplacementToWidget(Widget widget) {
     Navigator.of(navKey.currentContext!).pushReplacement(MaterialPageRoute(builder:((context) => widget)));
   }
+  static popRouter() {
+    Navigator.of(navKey.currentContext!).pop();
+  }
 }

@@ -4,6 +4,12 @@
         android:label="ecommerce_api"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+
+    <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAGvb_AYShA8s1S_4bLLZA0y2bk7vq_iYo"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
